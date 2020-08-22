@@ -16,8 +16,21 @@ if User.count.zero?
 end
 
 if Category.count.zero?
-  furniture = Category.create(name: 'Perabot')
-  furniture.subcategories.create(name: 'Lemari')
+  cupboard = Category.create(name: 'Perabot')
+  cupboard.subcategories.create(name: 'Lemari')
+end
+
+if Ad.count.zero?
+  ad = Ad.create(
+    user: User.admin,
+    title: 'Jual lemari pakaian plastik',
+    detail: 'Culpa laboris duis est dolore est laboris voluptate sit qui.',
+    price: 200000,
+    time_start: Time.now,
+    time_end: Time.now.tomorrow,
+    active: true,
+  )
+  ad.ad_categories.create(category: Category.first)
 end
 
 p 'seed done'

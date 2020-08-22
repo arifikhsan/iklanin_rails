@@ -1,4 +1,5 @@
 class Ad < ApplicationRecord
   belongs_to :user
-  belongs_to :category
+  has_many :ad_categories
+  has_many :categories, through: :ad_categories
 end

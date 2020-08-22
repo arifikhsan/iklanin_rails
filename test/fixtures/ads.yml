@@ -2,20 +2,18 @@
 
 one:
   user: one
-  category: one
   title: MyString
   detail: MyText
   price: 
-  time_start: 2020-08-22 20:31:32
-  time_end: 2020-08-22 20:31:32
+  time_start: 2020-08-22 20:39:10
+  time_end: 2020-08-22 20:39:10
   active: false
 
 two:
   user: two
-  category: two
   title: MyString
   detail: MyText
   price: 
-  time_start: 2020-08-22 20:31:32
-  time_end: 2020-08-22 20:31:32
+  time_start: 2020-08-22 20:39:10
+  time_end: 2020-08-22 20:39:10
   active: false
