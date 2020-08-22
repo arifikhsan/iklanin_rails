@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -yqq
-          sudo apt-get install libpq-dev build-essential libcurl4-openssl-dev
+          sudo apt-get install -yqq libpq-dev build-essential libcurl4-openssl-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
           yarn install
