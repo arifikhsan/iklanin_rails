@@ -1,24 +1,27 @@
-# README
+# Heroku command
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## heroku clean
 
-* Ruby version
+heroku restart && heroku pg:reset DATABASE --confirm iklanin && heroku run rake db:migrate
 
-* System dependencies
+## seed on heroku
 
-* Configuration
+heroku restart --app=iklanin && heroku pg:reset DATABASE --confirm iklanin --app=iklanin && heroku run rake db:migrate db:seed --app=iklanin 
 
-* Database creation
+## migrate and seed on heroku
 
-* Database initialization
+heroku run rake db:migrate db:seed --app=iklanin 
 
-* How to run the test suite
+heroku run console --app=iklanin 
+heroku run bash --app=iklanin 
 
-* Services (job queues, cache servers, search engines, etc.)
+## rebuild database locally
 
-* Deployment instructions
+rake db:drop db:create db:migrate
+rake db:drop db:create db:migrate db:seed
+rake db:seed
 
-* ...
+## logs
+
+heroku logs --tail --app iklanin
