@@ -55,9 +55,6 @@ jobs:
           POSTGRES_PASSWORD: postgres
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
-        # run: |
-        #   cp config/database.ci.yml config/database.yml
-        #   rake db:create db:migrate
         run: |
           rake db:create db:migrate
 
