@@ -15,4 +15,9 @@ if User.count.zero?
   admin.admin!
 end
 
+if Category.count.zero?
+  furniture = Category.create(name: 'Perabot')
+  furniture.subcategories.create(name: 'Lemari')
+end
+
 p 'seed done'
