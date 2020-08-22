@@ -9,5 +9,12 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :find_user, UserType, null: true do
+      argument :email, String, required: true
+    end
+    def find_user(email:)
+      User.find_by(email: email)
+    end
   end
 end

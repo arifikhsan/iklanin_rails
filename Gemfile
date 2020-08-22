@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "pry", "~> 0.13.1"
 end
 
 group :development do
@@ -50,13 +51,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.7"
-
 gem "rails_admin", "~> 2.0"
-
 gem "rack-cors", "~> 1.1"
-
 gem "jwt", "~> 2.2"
-
 gem "graphql", "~> 1.11"
-
 gem 'graphiql-rails', group: :development
