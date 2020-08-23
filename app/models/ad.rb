@@ -6,6 +6,7 @@ class Ad < ApplicationRecord
   has_many :categories, through: :ad_categories
 
   friendly_id :title, use: :slugged
+  acts_as_paranoid
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?

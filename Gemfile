@@ -56,7 +56,6 @@ gem "rack-cors", "~> 1.1"
 gem "jwt", "~> 2.2"
 gem "graphql", "~> 1.11"
 gem 'graphiql-rails', group: :development
-
 gem "friendly_id", "~> 5.4"
-
 gem "graphql-rails_logger", "~> 1.2"
+gem "paranoia", "~> 2.4"
