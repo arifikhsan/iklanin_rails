@@ -13,6 +13,10 @@ if User.count.zero?
   admin.build_user_detail(name: 'admin')
   admin.save
   admin.admin!
+
+  user = User.create(email: 'user@example.com', password: '123456')
+  user.build_user_detail(name: 'user')
+  user.save
 end
 
 if Category.count.zero?
