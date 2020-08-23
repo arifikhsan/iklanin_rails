@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Rake test",
+      "type": "Ruby",
+      "request": "launch",
+      "program": "${workspaceRoot}/bin/rake",
+      "args": ["db:migrate", "test"],
+      "env": {"RAILS_ENV": "test"}
+    },
+    {
       "name": "Drop, Recreate, Seed",
       "type": "Ruby",
       "request": "launch",
@@ -24,6 +32,6 @@
       "request": "launch",
       "program": "${workspaceRoot}/bin/rake",
       "args": ["db:seed"]
-    },
+    }
   ]
 }

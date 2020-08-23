@@ -1,19 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  # id: 1
   user: one
   title: MyString
   detail: MyText
-  price: 
+  price: 200000
   time_start: 2020-08-22 20:39:10
   time_end: 2020-08-22 20:39:10
   active: false
 
 two:
+  # id: 2
   user: two
-  title: MyString
-  detail: MyText
-  price: 
+  title: MyStrings
+  detail: MyTexts
+  price: 300000
   time_start: 2020-08-22 20:39:10
   time_end: 2020-08-22 20:39:10
   active: false

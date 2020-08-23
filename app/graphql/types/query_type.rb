@@ -9,5 +9,15 @@ module Types
     def find_user(email:)
       User.find_by(email: email)
     end
+
+    field :all_users, [UserType], null: true
+    def all_users
+      User.all
+    end
+
+    field :all_ads, [AdType], null: true
+    def all_ads
+      Ad.all
+    end
   end
 end

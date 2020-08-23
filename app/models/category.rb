@@ -7,6 +7,7 @@ class Category < ApplicationRecord
   belongs_to :parent, class_name: 'Category', optional: true
 
   alias_attribute :subs, :subcategories
+  alias_attribute :child, :subcategories
   alias_attribute :parent_category, :parent
 
   friendly_id :name, use: :slugged

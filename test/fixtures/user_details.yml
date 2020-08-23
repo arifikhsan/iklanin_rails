@@ -2,8 +2,8 @@
 
 one:
   user: one
-  name: MyString
+  name: admin
 
 two:
   user: two
-  name: MyString
+  name: a

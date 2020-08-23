@@ -58,3 +58,5 @@ gem "graphql", "~> 1.11"
 gem 'graphiql-rails', group: :development
 
 gem "friendly_id", "~> 5.4"
+
+gem "graphql-rails_logger", "~> 1.2"
