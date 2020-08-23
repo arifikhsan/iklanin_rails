@@ -13,7 +13,8 @@ module Mutations
 
     def resolve(args)
       ad = Ad.create(args.except(:category_ids).merge(user_id: context[:current_user].id))
-      ad.ad_categories.create(args[:category_ids].map { |id| {category_id: id} })
+      category_ids = args[:category_ids].present? ? args[:category_ids] : [Category.first.id]
+      ad.ad_categories.create(category_ids.map { |id| {category_id: id} })
 
       { message: 'ok', slug: ad.slug }
     end
