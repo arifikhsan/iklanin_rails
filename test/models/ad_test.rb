@@ -1,12 +1,17 @@
 require 'test_helper'
 
 class AdTest < ActiveSupport::TestCase
-  test "the truth" do
-    assert true
-  end
+  # test "the truth" do
+  #   assert true
+  # end
 
-  # test "should not save ad without anything" do
-  #   ad = Ad.new
-  #   assert_not ad.save
+  # test "the false" do
+  #   assert_not false
+  # end
+
+  # test "should not save without anything" do
+    # binding.pry
+    # assert_not Ad.new.save
+    # assert true
   # end
 end

@@ -30,3 +30,8 @@ rake db:seed
 ### logs
 
 heroku logs --tail --app iklanin
+
+### secret key
+
+EDITOR=vim rails credentials:edit
+rails:credentials:show
