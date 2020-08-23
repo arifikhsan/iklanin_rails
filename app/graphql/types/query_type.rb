@@ -19,5 +19,10 @@ module Types
     def all_ads
       Ad.all
     end
+
+    field :all_categories, [CategoryType], null: true
+    def all_categories
+      Category.all
+    end
   end
 end
