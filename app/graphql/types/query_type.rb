@@ -24,5 +24,12 @@ module Types
     def all_categories
       Category.all
     end
+
+    field :find_ad, AdType, null: true do
+      argument :slug, String, required: true
+    end
+    def find_ad(slug:)
+      Ad.friendly.find(slug)
+    end
   end
 end
