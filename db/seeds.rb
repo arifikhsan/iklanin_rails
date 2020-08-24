@@ -22,12 +22,13 @@ end
 if Category.count.zero?
   Category.create(name: 'Tidak ada kategori')
   cupboard = Category.create(name: 'Perabot')
-  cupboard.subcategories.create(name: 'Lemari')
+  cupboard.child.create(name: 'Lemari')
 end
 
 if Ad.count.zero?
   ad = Ad.create(
     user: User.admin,
+    category: Category.first,
     title: 'Jual lemari pakaian plastik',
     detail: 'Culpa laboris duis est dolore est laboris voluptate sit qui.',
     price: 200000,
@@ -35,7 +36,6 @@ if Ad.count.zero?
     time_end: Time.now.tomorrow,
     active: true,
   )
-  ad.ad_categories.create(category: Category.first)
 end
 
 p 'seed done'

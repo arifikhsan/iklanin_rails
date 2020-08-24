@@ -2,6 +2,7 @@ module Types
   class AdType < Types::BaseObject
     field :id, Integer, null: false
     field :user, UserType, null: false
+    field :category, CategoryType, null: false
     field :title, String, null: true
     field :detail, String, null: true
     field :price, Integer, null: true

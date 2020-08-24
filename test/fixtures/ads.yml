@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  # id: 1
   user: one
+  category: one
   title: MyString
   detail: MyText
   price: 200000
@@ -11,8 +11,8 @@ one:
   active: false
 
 two:
-  # id: 2
   user: two
+  category: two
   title: MyStrings
   detail: MyTexts
   price: 300000

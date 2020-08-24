@@ -1,9 +1,8 @@
 class Ad < ApplicationRecord
   extend FriendlyId
 
+  belongs_to :category
   belongs_to :user
-  has_many :ad_categories
-  has_many :categories, through: :ad_categories
 
   friendly_id :title, use: :slugged
   acts_as_paranoid
