@@ -20,7 +20,6 @@ if User.count.zero?
 end
 
 if Category.count.zero?
-  Category.create(name: 'Tidak ada kategori')
   cupboard = Category.create(name: 'Perabot')
   cupboard.child.create(name: 'Lemari')
 end
