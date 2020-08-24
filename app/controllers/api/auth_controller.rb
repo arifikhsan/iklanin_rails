@@ -17,9 +17,8 @@ class Api::AuthController < Api::BaseController
     return render_registered if @user.present?
 
     @user = create_user
-    return render_failed if @user.nil?
-
-    encode_token
+    return render_failed unless @user.id?
+    render_success
   end
 
   def user; end
