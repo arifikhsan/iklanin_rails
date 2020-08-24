@@ -31,5 +31,10 @@ module Types
     def find_ad(slug:)
       Ad.friendly.find(slug)
     end
+
+    field :my_ads, [AdType], null: true
+    def my_ads
+      context[:current_user].ads
+    end
   end
 end
