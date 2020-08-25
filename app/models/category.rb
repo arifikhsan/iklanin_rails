@@ -10,4 +10,12 @@ class Category < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end
+
+  def self.service
+    find_by(name: 'Jasa')
+  end
+
+  def self.stuff
+    find_by(name: 'Barang')
+  end
 end

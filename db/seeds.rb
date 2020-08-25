@@ -22,15 +22,27 @@ end
 if Category.count.zero?
   cupboard = Category.create(name: 'Perabot')
   cupboard.child.create(name: 'Lemari')
+  Category.create(name: 'Barang')
+  Category.create(name: 'Jasa')
 end
 
 if Ad.count.zero?
-  ad = Ad.create(
+  Ad.create(
     user: User.admin,
-    category: Category.first,
+    category: Category.stuff,
     title: 'Jual lemari pakaian plastik',
-    detail: 'Culpa laboris duis est dolore est laboris voluptate sit qui.',
+    detail: 'Consectetur ea est id excepteur eu ea ullamco nostrud nisi occaecat Lorem. Magna voluptate reprehenderit commodo voluptate labore qui reprehenderit sit. Irure exercitation consectetur id ex ullamco exercitation voluptate culpa adipisicing sit enim cupidatat. Aliquip est officia cupidatat est minim id laboris nostrud irure minim ullamco tempor aliqua mollit.',
     price: 200000,
+    time_start: Time.now,
+    time_end: Time.now.tomorrow,
+    active: true,
+  )
+  Ad.create(
+    user: User.admin,
+    category: Category.service,
+    title: 'Jasa membersihkan rumah luar dalam',
+    detail: 'Esse id ea quis ipsum ex enim commodo est duis amet enim proident. Tempor voluptate ullamco nisi elit culpa amet. Tempor laborum veniam officia ad Lorem adipisicing veniam esse excepteur culpa ad laboris excepteur. Lorem elit laboris qui exercitation Lorem magna nostrud.',
+    price: 400000,
     time_start: Time.now,
     time_end: Time.now.tomorrow,
     active: true,
