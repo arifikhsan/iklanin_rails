@@ -1,9 +1,5 @@
 # Iklanin Rails
 
-## Todos
-
-CRUD iklan
-
 ## Commands
 
 ### heroku clean
