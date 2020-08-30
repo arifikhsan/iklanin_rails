@@ -1,9 +1,9 @@
 module Mutations
-  class CreateAdImages < BaseMutation
+  class CreateAdImage < BaseMutation
     field :message, String, null: false
 
     argument :ad_id, Integer, required: true
-    argument :images, [ApolloUploadServer::Upload], required: true
+    argument :images, ApolloUploadServer::Upload, required: true
     argument :cover, Boolean, required: true
 
     def resolve(args)
