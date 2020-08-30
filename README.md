@@ -1,5 +1,13 @@
 # Iklanin Rails
 
+## Todos
+
+ad status
+draft
+review
+published
+moderate
+
 ## Commands
 
 ### heroku clean
