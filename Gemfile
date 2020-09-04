@@ -61,3 +61,5 @@ gem "graphql-rails_logger", "~> 1.2"
 gem "paranoia", "~> 2.4"
 
 gem "apollo_upload_server", "~> 2.0"
+
+gem "image_processing", "~> 1.11"

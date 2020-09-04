@@ -8,6 +8,9 @@ review
 published
 moderate
 
+create ad images input type: 
+image, cover
+
 ## Commands
 
 ### heroku clean
