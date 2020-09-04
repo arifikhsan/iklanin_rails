@@ -285,7 +285,7 @@ DEPENDENCIES
   graphiql-rails
   graphql (~> 1.11)
   graphql-rails_logger (~> 1.2)
-  image_processing (~> 1.11)
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jwt (~> 2.2)
   paranoia (~> 2.4)
