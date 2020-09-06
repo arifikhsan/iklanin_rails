@@ -60,3 +60,5 @@ gem "friendly_id", "~> 5.4"
 gem "graphql-rails_logger", "~> 1.2"
 gem "paranoia", "~> 2.4"
 gem "apollo_upload_server", "~> 2.0"
+
+gem "rails_admin_rollincode", "~> 1.3"
