@@ -35,7 +35,6 @@ if Ad.count.zero?
     price: 200000,
     time_start: Time.now,
     time_end: Time.now.tomorrow,
-    active: true,
   )
   Ad.create(
     user: User.admin,
@@ -45,7 +44,6 @@ if Ad.count.zero?
     price: 400000,
     time_start: Time.now,
     time_end: Time.now.tomorrow,
-    active: true,
   )
 end
 

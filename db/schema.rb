@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2020_08_30_062224) do
     t.bigint "price"
     t.datetime "time_start"
     t.datetime "time_end"
-    t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
