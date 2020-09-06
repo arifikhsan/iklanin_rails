@@ -8,7 +8,6 @@ one:
   price: 200000
   time_start: 2020-08-22 20:39:10
   time_end: 2020-08-22 20:39:10
-  active: false
 
 two:
   user: two
@@ -18,4 +17,3 @@ two:
   price: 300000
   time_start: 2020-08-22 20:39:10
   time_end: 2020-08-22 20:39:10
-  active: false

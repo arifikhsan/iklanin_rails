@@ -1,5 +1,8 @@
-name: Rails
-on: push
+name: Staging
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
   verify:
@@ -73,9 +76,9 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.4.6
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: iklanin
+          heroku_app_name: staging-iklanin
           heroku_email: arif.ikhsanudin.id@gmail.com
 
       - name: Migrate and seed
         run: |
-          heroku run rake db:migrate db:seed --app=iklanin
+          heroku run rake db:migrate db:seed --app=staging-iklanin

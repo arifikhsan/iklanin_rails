@@ -85,3 +85,9 @@ production:
   database: iklanin_rails_production
   username: iklanin_rails
   password: <%= ENV['IKLANIN_RAILS_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: iklanin_rails_staging
+  username: iklanin_rails
+  password: <%= ENV['IKLANIN_RAILS_DATABASE_PASSWORD'] %>

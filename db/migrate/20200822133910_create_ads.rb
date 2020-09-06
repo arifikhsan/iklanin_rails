@@ -8,7 +8,6 @@ class CreateAds < ActiveRecord::Migration[6.0]
       t.bigint :price
       t.datetime :time_start
       t.datetime :time_end
-      t.boolean :active
 
       t.timestamps
     end
