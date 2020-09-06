@@ -3,13 +3,15 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+
+  ## == method to call for current_user ==
+  config.current_user_method(&:current_user)
 
   ## == CancanCan ==
-  # config.authorize_with :cancancan
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -22,6 +24,8 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
+
+  config.parent_controller = 'ApplicationController'
 
   config.actions do
     dashboard                     # mandatory
