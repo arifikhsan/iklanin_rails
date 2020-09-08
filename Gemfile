@@ -68,3 +68,5 @@ gem "pundit", "~> 2.1"
 gem "cancancan", "~> 3.1"
 
 gem "kaminari", "~> 1.2"
+
+gem "aws-sdk-s3", "~> 1.79", require: false
