@@ -1,6 +1,17 @@
 json.data @ads do |ad|
   json.id ad.id
   json.title ad.title
+  json.detail ad.detail
+  json.price ad.price
+  json.time_start ad.time_start
+  json.time_end ad.time_end
+  json.user do
+    json.name ad.user.name
+    json.email ad.user.email
+  end
+  json.category do
+    json.name ad.category.name
+  end
 end
 json.metadata do
   json.total_page @ads.total_pages
