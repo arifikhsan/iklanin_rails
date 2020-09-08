@@ -5,6 +5,7 @@ json.data @ads do |ad|
   json.price ad.price
   json.time_start ad.time_start
   json.time_end ad.time_end
+  json.status ad.status
   json.user do
     json.name ad.user.name
     json.email ad.user.email
