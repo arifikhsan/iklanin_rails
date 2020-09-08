@@ -62,3 +62,11 @@ gem "paranoia", "~> 2.4"
 gem "apollo_upload_server", "~> 2.0"
 
 gem "rails_admin_rollincode", "~> 1.3"
+
+gem "pundit", "~> 2.1"
+
+gem "cancancan", "~> 3.1"
+
+gem "kaminari", "~> 1.2"
+
+gem "aws-sdk-s3", "~> 1.79", require: false
