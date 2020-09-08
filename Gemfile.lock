@@ -294,6 +294,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jwt (~> 2.2)
+  kaminari (~> 1.2)
   paranoia (~> 2.4)
   pg (>= 0.18, < 2.0)
   pry (~> 0.13.1)

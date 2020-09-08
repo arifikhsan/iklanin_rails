@@ -15,6 +15,11 @@ module Types
       User.all
     end
 
+    field :paginate_users, UserType.connection_type, null: true#, connection: true
+    def paginate_users
+      User.all
+    end
+
     field :all_ads, [AdType], null: true
     def all_ads
       Ad.all

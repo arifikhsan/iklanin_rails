@@ -66,3 +66,5 @@ gem "rails_admin_rollincode", "~> 1.3"
 gem "pundit", "~> 2.1"
 
 gem "cancancan", "~> 3.1"
+
+gem "kaminari", "~> 1.2"

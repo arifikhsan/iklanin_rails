@@ -13,5 +13,9 @@ Rails.application.routes.draw do
     post 'register', to: 'auth#register'
     get 'user', to: 'auth#user'
     get 'wakeup', to: 'misc#wakeup'
+    namespace :v1 do
+      get :ping, to: 'ad#ping'
+      get :ads, to: 'ad#all'
+    end
   end
 end
