@@ -1,6 +1,7 @@
 json.data @ads do |ad|
   json.id ad.id
   json.title ad.title
+  json.slug ad.slug
   json.detail ad.detail
   json.price ad.price
   json.time_start ad.time_start

@@ -2,14 +2,11 @@
 
 ## Todos
 
-ad status
-draft
-review
-published
-moderate
+create ad
+status jadi review
 
-create ad images input type: 
-image, cover
+be ads
+order by date asc
 
 ## Commands
 
