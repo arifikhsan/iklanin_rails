@@ -7,6 +7,10 @@ class Api::V1::AdsController < Api::BaseController
     @ads = Ad.active.page(params[:page])
   end
 
+  def create
+    # TODO: create then review
+  end
+
   private
 
   def set_ad
