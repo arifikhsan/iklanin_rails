@@ -24,6 +24,8 @@ class Api::V1::AdsController < Api::BaseController
   end
 
   def update
+    authorize @ad
+
     @ad.update(ad_params)
     @ad.time_start = Time.now
     @ad.time_end = Time.now + 30.days
@@ -37,6 +39,8 @@ class Api::V1::AdsController < Api::BaseController
   end
 
   def destroy
+    authorize @ad
+
     @ad.destroy
   end
 

@@ -34,6 +34,10 @@ class ApplicationPolicy
     false
   end
 
+  def owned?
+    user.id == record.user_id || user.admin?
+  end
+
   class Scope
     attr_reader :user, :scope
 
