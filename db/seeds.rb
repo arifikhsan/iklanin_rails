@@ -56,16 +56,26 @@ end
 
 
 if Rails.env.development?
+  10.times do |index|
+    user = User.create(email: "user#{index}@example.com", password: '123456')
+    user.build_user_detail(name: "user #{index}")
+    user.save
+  end
+
+  10.times do
+    Category.create(name: Faker::Lorem.word)
+  end
+
   10.times do
     Ad.create(
-      user: User.last,
-      category: Category.service,
+      user: User.all.sample,
+      category: Category.all.sample,
       title: Faker::Lorem.sentence,
       detail: Faker::Lorem.paragraph,
-      price: 400000,
+      price: Faker::Number.number(digits: 10),
       status: Ad.statuses[:published],
       time_start: Time.now,
-      time_end: Time.now.tomorrow,
+      time_end: Time.now + 30.days,
     )
   end
 end
