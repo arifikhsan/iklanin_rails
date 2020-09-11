@@ -107,6 +107,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.9.0)
+    faker (2.13.0)
+      i18n (>= 1.6, < 2)
     ffi (1.13.1-x64-mingw32)
     friendly_id (5.4.0)
       activerecord (>= 4.0.0)
@@ -305,6 +307,7 @@ DEPENDENCIES
   cancancan (~> 3.1)
   capybara (>= 2.15)
   devise (~> 4.7)
+  faker (~> 2.13)
   friendly_id (~> 5.4)
   graphiql-rails
   graphql (~> 1.11)

@@ -14,8 +14,7 @@ Rails.application.routes.draw do
     get 'user', to: 'auth#user'
     get 'wakeup', to: 'misc#wakeup'
     namespace :v1 do
-      get :ping, to: 'ad#ping'
-      resources :ads, only: [:index]
+      resources :ads
     end
   end
 end
