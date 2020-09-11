@@ -55,20 +55,20 @@ if Ad.count.zero?
 end
 
 
-# if Rails.env.development?
-#   100.times do
-#     Ad.create(
-#       user: User.admin,
-#       category: Category.service,
-#       title: 'Jasa membersihkan rumah luar dalam',
-#       detail: 'Esse id ea quis ipsum ex enim commodo est duis amet enim proident. Tempor voluptate ullamco nisi elit culpa amet. Tempor laborum veniam officia ad Lorem adipisicing veniam esse excepteur culpa ad laboris excepteur. Lorem elit laboris qui exercitation Lorem magna nostrud.',
-#       price: 400000,
-#       status: Ad.statuses[:published],
-#       time_start: Time.now,
-#       time_end: Time.now.tomorrow,
-#     )
-#   end
-# end
+if Rails.env.development?
+  10.times do
+    Ad.create(
+      user: User.last,
+      category: Category.service,
+      title: Faker::Lorem.sentence,
+      detail: Faker::Lorem.paragraph,
+      price: 400000,
+      status: Ad.statuses[:published],
+      time_start: Time.now,
+      time_end: Time.now.tomorrow,
+    )
+  end
+end
 
 
 p 'seed done'
