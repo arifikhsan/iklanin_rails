@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'wakeup', to: 'misc#wakeup'
     namespace :v1 do
       resources :ads
+      resources :ad_images
     end
   end
 end
