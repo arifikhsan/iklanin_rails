@@ -47,7 +47,7 @@ class Api::V1::AdsController < Api::BaseController
   private
 
   def set_ad
-    @ad = Ad.find(params[:id])
+    @ad = Ad.friendly.find(params[:id])
   end
 
   def ad_params
