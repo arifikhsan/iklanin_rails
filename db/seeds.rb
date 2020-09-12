@@ -62,17 +62,17 @@ if Rails.env.development?
     user.save
   end
 
-  10.times do
-    Category.create(name: Faker::Lorem.word)
+  100.times do
+    Category.create(name: Faker::Lorem.unique.word)
   end
 
-  10.times do
+  100.times do
     Ad.create(
       user: User.all.sample,
       category: Category.all.sample,
       title: Faker::Lorem.sentence,
       detail: Faker::Lorem.paragraph,
-      price: Faker::Number.number(digits: 10),
+      price: Faker::Number.within(range: 10000..900000),
       status: Ad.statuses[:published],
       time_start: Time.now,
       time_end: Time.now + 30.days,
