@@ -7,7 +7,8 @@ json.data @ads do |ad|
   json.time_start ad.time_start
   json.time_end ad.time_end
   json.status ad.status
-  json.image ad.images do |ad_image|
+  json.cover_image_url polymorphic_url(ad.images.cover.image.variant(resize: "300x300"))
+  json.images ad.images do |ad_image|
     json.filename ad_image.image.blob.filename
     json.cover ad_image.cover
     json.url do

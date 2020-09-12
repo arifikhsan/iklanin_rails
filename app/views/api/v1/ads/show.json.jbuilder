@@ -7,6 +7,7 @@ json.data do
   json.time_start @ad.time_start
   json.time_end @ad.time_end
   json.status @ad.status
+  json.cover_image_url polymorphic_url(@ad.images.cover.image.variant(resize: "300x300"))
   json.user do
     json.name @ad.user.name
     json.email @ad.user.email
