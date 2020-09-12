@@ -78,6 +78,19 @@ if Rails.env.development?
       time_end: Time.now + 30.days,
     )
   end
+
+  Ad.all.map do |ad|
+    3.times do
+      ad.images.create do |ad_image|
+        ad_image.image.attach(io: Rails.root.join('app/assets/images/cat.jpg').open, filename: 'cat.jpg')
+        ad_image.cover = false
+      end
+    end
+
+    image_cover = ad.images.sample
+    image_cover.cover = true
+    image_cover.save
+  end
 end
 
 

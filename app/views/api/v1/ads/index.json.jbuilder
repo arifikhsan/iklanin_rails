@@ -7,6 +7,14 @@ json.data @ads do |ad|
   json.time_start ad.time_start
   json.time_end ad.time_end
   json.status ad.status
+  json.image ad.images do |ad_image|
+    json.filename ad_image.image.blob.filename
+    json.cover ad_image.cover
+    json.url do
+      json.small polymorphic_url(ad_image.image.variant(resize: "300x300"))
+      json.original rails_blob_url(ad_image.image, disposition: "attachment")
+    end
+  end
   json.user do
     json.name ad.user.name
     json.email ad.user.email
