@@ -24,8 +24,7 @@ json.data @ads do |ad|
     json.name ad.category.name
   end
 end
-json.metadata do
-  json.total_page @ads.total_pages
+json.pagination do
   json.total_pages @ads.total_pages
   json.current_page @ads.current_page
   json.next_page @ads.next_page
@@ -33,4 +32,6 @@ json.metadata do
   json.is_first_page @ads.first_page?
   json.is_last_page @ads.last_page?
   json.is_out_of_range @ads.out_of_range?
+  json.limit @ads.limit_value
+  json.total_count @ads.total_count
 end
