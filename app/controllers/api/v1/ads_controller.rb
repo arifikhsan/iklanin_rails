@@ -3,7 +3,7 @@ class Api::V1::AdsController < Api::BaseController
   before_action :set_ad, only: [:update, :show, :destroy]
 
   def index
-    @ads = Ad.active.page(params[:page]).includes(:category, :user, ad_images: {image_attachment: :blob})
+    @ads = Ad.active.page(params[:page]).includes(:category, user: :user_detail, ad_images: {image_attachment: :blob})
   end
 
   def show
