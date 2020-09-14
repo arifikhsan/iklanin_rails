@@ -17,7 +17,14 @@
       "type": "Ruby",
       "request": "launch",
       "program": "${workspaceRoot}/bin/rake",
-      "args": ["db:drop", "db:create", "db:migrate", "db:seed"]
+      "args": ["db:reset"]
+    },
+    {
+      "name": "Drop, Recreate",
+      "type": "Ruby",
+      "request": "launch",
+      "program": "${workspaceRoot}/bin/rake",
+      "args": ["db:migrate:reset"]
     },
     {
       "name": "Rails server",

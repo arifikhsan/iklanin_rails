@@ -6,7 +6,8 @@ class Ad < ApplicationRecord
   has_many :ad_images
   alias_attribute :images, :ad_images
   enum status: [:draft, :review, :published, :moderate]
-  scope :active, -> { where(:status => Ad.statuses[:published]) }
+  scope :published, -> { where(status: Ad.statuses[:published]) }
+  scope :latest, -> { order(time_start: :asc) }
 
   friendly_id :title, use: :slugged
   acts_as_paranoid
