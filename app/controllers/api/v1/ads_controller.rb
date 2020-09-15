@@ -10,16 +10,29 @@ class Api::V1::AdsController < Api::BaseController
   end
 
   def create
-    @ad = Ad.new(ad_params)
+    @ad = Ad.new
+    @ad.category_id = ad_params[:category_id].to_i
+    @ad.title = ad_params[:title]
+    @ad.detail = ad_params[:detail]
+    @ad.price = ad_params[:price]
     @ad.user = current_user
     @ad.time_start = Time.now
     @ad.time_end = Time.now + 30.days
     @ad.status = Ad.statuses[:published]
 
-    if @ad.save
+    return render_error unless @ad.save
+
+    image_file_array = params[:image_file].values
+    image_cover_array = params[:image_cover].values.map {|value| value.to_s.downcase == "true"}
+
+    image_file_array.zip(image_cover_array).each do |file, cover|
+      AdImage.create(ad_id: @ad.id, image: file, cover: cover)
+    end
+
+    if @ad.valid?
       render json: {message: 'created', data: @ad}, status: :created
     else
-      render json: {errors: @ad.errors.full_messages}, status: :unprocessable_entity
+      render_error
     end
   end
 
@@ -50,12 +63,18 @@ class Api::V1::AdsController < Api::BaseController
     @ad = Ad.friendly.find(params[:id])
   end
 
+  def render_error
+    render json: {errors: @ad.errors.full_messages}, status: :unprocessable_entity
+  end
+
   def ad_params
-    params.require(:ad).permit(
-      :category_id,
-      :title,
-      :detail,
-      :price
-    )
+    params.permit!
+    # params.require(:ad).permit(
+    #   :category_id,
+    #   :title,
+    #   :detail,
+    #   :price,
+    #   images: []
+    # )
   end
 end
