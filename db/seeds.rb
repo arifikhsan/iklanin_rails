@@ -24,6 +24,7 @@ if Category.count.zero?
   cupboard.child.create(name: 'Lemari')
   Category.create(name: 'Barang')
   Category.create(name: 'Jasa')
+  Category.create(name: 'Lainnya')
 end
 
 if Setting.count.zero?
