@@ -95,6 +95,16 @@ ActiveRecord::Schema.define(version: 2020_09_08_144619) do
   create_table "user_details", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
+    t.string "phone_number"
+    t.string "whatsapp_phone_number"
+    t.string "address"
+    t.string "village"
+    t.string "district"
+    t.string "regency"
+    t.string "province"
+    t.string "zip_code"
+    t.date "dob"
+    t.integer "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_details_on_user_id"

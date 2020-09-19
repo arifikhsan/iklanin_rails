@@ -59,7 +59,19 @@ end
 if Rails.env.development?
   10.times do |index|
     user = User.create(email: "user#{index}@example.com", password: '123456')
-    user.build_user_detail(name: "user #{index}")
+    user.build_user_detail(
+      name: "user #{index}",
+      phone_number: Faker::PhoneNumber.phone_number,
+      whatsapp_phone_number: Faker::PhoneNumber.phone_number,
+      address: Faker::Lorem.sentence,
+      village: Faker::Lorem.word,
+      district: Faker::Lorem.word,
+      regency: Faker::Lorem.word,
+      province: Faker::Lorem.word,
+      zip_code: Faker::Address.zip_code,
+      dob: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
+      gender: UserDetail.genders[:male],
+    )
     user.save
   end
 
