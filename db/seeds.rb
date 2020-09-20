@@ -51,7 +51,7 @@ if Ad.count.zero?
     price: 400000,
     status: Ad.statuses[:published],
     time_start: Time.now,
-    time_end: Time.now.tomorrow,
+    time_end: Time.now + 1.year,
   )
 end
 
@@ -88,7 +88,7 @@ if Rails.env.development?
       price: Faker::Number.within(range: 10000..900000),
       status: Ad.statuses[:published],
       time_start: Time.now,
-      time_end: Time.now + 30.days,
+      time_end: Time.now + 1.year,
     )
   end
 
