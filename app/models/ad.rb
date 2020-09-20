@@ -21,4 +21,8 @@ class Ad < ApplicationRecord
   def set_default_status
     self.status ||= :draft
   end
+
+  def related
+    category.ads.published.latest.limit(6)
+  end
 end
