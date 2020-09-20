@@ -20,8 +20,8 @@ module Types
       User.all
     end
 
-    field :all_ads, [ItemType], null: true
-    def all_ads
+    field :all_items, [ItemType], null: true
+    def all_items
       item.all
     end
 
@@ -30,15 +30,15 @@ module Types
       Category.all
     end
 
-    field :find_ad, ItemType, null: true do
+    field :find_item, ItemType, null: true do
       argument :slug, String, required: true
     end
-    def find_ad(slug:)
+    def find_item(slug:)
       item.friendly.find(slug)
     end
 
-    field :my_ads, [ItemType], null: true
-    def my_ads
+    field :my_items, [ItemType], null: true
+    def my_items
       context[:current_user].items
     end
   end

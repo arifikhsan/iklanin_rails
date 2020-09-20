@@ -1,4 +1,4 @@
-class Api::V1::AdsController < Api::BaseController
+class Api::V1::ItemsController < Api::BaseController
   before_action :authorize_request, only: [:create, :update, :destroy]
   before_action :set_item, only: [:update, :show, :destroy]
 
