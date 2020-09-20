@@ -6,13 +6,18 @@ class Ad < ApplicationRecord
   has_many :ad_images
   alias_attribute :images, :ad_images
   enum status: [:draft, :review, :published, :moderate]
-  scope :published, -> { where(status: Ad.statuses[:published]) }
-  scope :latest, -> { order(time_start: :asc) }
 
   friendly_id :title, use: :slugged
   acts_as_paranoid
-
   after_initialize :set_default_status, :if => :new_record?
+
+  scope :latest, -> { order(time_start: :asc) }
+  scope :status_draft, -> { where(status: Ad.statuses[:draft]) }
+  scope :status_published, -> { where(status: Ad.statuses[:published]) }
+  scope :current_displayed, -> { where('time_start < ? AND time_end > ?', Time.now, Time.now) }
+
+  scope :show_active, -> { status_published.latest.current_displayed }
+  scope :show_draft, -> { status_draft.latest.current_displayed }
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
@@ -23,6 +28,6 @@ class Ad < ApplicationRecord
   end
 
   def related
-    category.ads.where.not(id: id).published.latest.limit(6)
+    category.ads.where.not(id: id).show_active.limit(6)
   end
 end
