@@ -23,6 +23,6 @@ class Ad < ApplicationRecord
   end
 
   def related
-    category.ads.published.latest.limit(6)
+    category.ads.where.not(id: id).published.latest.limit(6)
   end
 end
