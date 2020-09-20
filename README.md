@@ -2,11 +2,6 @@
 
 ## Todos
 
-create ad
-status jadi review
-
-be ads
-order by date asc
 
 ## Commands
 

@@ -32,24 +32,24 @@ if Setting.count.zero?
   Setting.create(key: 'max_duration_free', value: 30, detail: 'maksimal iklan tayang per hari')
 end
 
-if Ad.count.zero?
-  Ad.create(
+if Item.count.zero?
+  Item.create(
     user: User.admin,
     category: Category.stuff,
     title: 'Jual lemari pakaian plastik',
     detail: 'Consectetur ea est id excepteur eu ea ullamco nostrud nisi occaecat Lorem. Magna voluptate reprehenderit commodo voluptate labore qui reprehenderit sit. Irure exercitation consectetur id ex ullamco exercitation voluptate culpa adipisicing sit enim cupidatat. Aliquip est officia cupidatat est minim id laboris nostrud irure minim ullamco tempor aliqua mollit.',
     price: 200000,
-    status: Ad.statuses[:published],
+    status: Item.statuses[:published],
     time_start: Time.now,
     time_end: Time.now.tomorrow,
   )
-  Ad.create(
+  Item.create(
     user: User.admin,
     category: Category.service,
     title: 'Jasa membersihkan rumah luar dalam',
-    detail: 'Esse id ea quis ipsum ex enim commodo est duis amet enim proident. Tempor voluptate ullamco nisi elit culpa amet. Tempor laborum veniam officia ad Lorem adipisicing veniam esse excepteur culpa ad laboris excepteur. Lorem elit laboris qui exercitation Lorem magna nostrud.',
+    detail: 'Esse id ea quis ipsum ex enim commodo est duis amet enim proident. Tempor voluptate ullamco nisi elit culpa amet. Tempor laborum veniam officia item.Lorem adipisicing veniam esse excepteur culpa item.laboris excepteur. Lorem elit laboris qui exercitation Lorem magna nostrud.',
     price: 400000,
-    status: Ad.statuses[:published],
+    status: Item.statuses[:published],
     time_start: Time.now,
     time_end: Time.now + 1.year,
   )
@@ -80,27 +80,27 @@ if Rails.env.development?
   end
 
   100.times do
-    Ad.create(
+    Item.create(
       user: User.all.sample,
       category: Category.all.sample,
       title: Faker::Lorem.sentence,
       detail: Faker::Lorem.paragraph,
       price: Faker::Number.within(range: 10000..900000),
-      status: Ad.statuses[:published],
+      status: Item.statuses[:published],
       time_start: Time.now,
       time_end: Time.now + 1.year,
     )
   end
 
-  Ad.all.map do |ad|
+  Item.all.map do |item|
     3.times do
-      ad.images.create do |ad_image|
+      item.images.create do |ad_image|
         ad_image.image.attach(io: Rails.root.join('app/assets/images/cat.jpg').open, filename: 'cat.jpg')
         ad_image.cover = false
       end
     end
 
-    image_cover = ad.images.sample
+    image_cover = item.images.sample
     image_cover.cover = true
     image_cover.save
   end

@@ -1,8 +1,8 @@
 class Category < ApplicationRecord
   extend FriendlyId
 
+  has_many :items
   has_many :child, class_name: 'Category', foreign_key: :parent_id
-  has_many :ads
   belongs_to :parent, class_name: 'Category', optional: true
 
   friendly_id :name, use: :slugged

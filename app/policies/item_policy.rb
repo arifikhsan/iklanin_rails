@@ -1,4 +1,4 @@
-class AdPolicy < ApplicationPolicy
+class ItemPolicy < ApplicationPolicy
   def update?
     owned?
   end

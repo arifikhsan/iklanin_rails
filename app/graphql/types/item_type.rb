@@ -1,5 +1,5 @@
 module Types
-  class AdType < Types::BaseObject
+  class ItemType < Types::BaseObject
     field :id, Integer, null: false
     field :user, UserType, null: false
     field :category, CategoryType, null: false

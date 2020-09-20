@@ -1,4 +1,4 @@
-class Ad < ApplicationRecord
+class Item < ApplicationRecord
   extend FriendlyId
 
   belongs_to :category
@@ -9,11 +9,11 @@ class Ad < ApplicationRecord
 
   friendly_id :title, use: :slugged
   acts_as_paranoid
-  after_initialize :set_default_status, :if => :new_record?
+  after_initialize :set_default_status, if: :new_record?
 
   scope :latest, -> { order(time_start: :asc) }
-  scope :status_draft, -> { where(status: Ad.statuses[:draft]) }
-  scope :status_published, -> { where(status: Ad.statuses[:published]) }
+  scope :status_draft, -> { where(status: item.statuses[:draft]) }
+  scope :status_published, -> { where(status: item.statuses[:published]) }
   scope :current_displayed, -> { where('time_start < ? AND time_end > ?', Time.now, Time.now) }
 
   scope :show_active, -> { status_published.latest.current_displayed }
@@ -28,6 +28,6 @@ class Ad < ApplicationRecord
   end
 
   def related
-    category.ads.where.not(id: id).show_active.limit(6)
+    category.items.where.not(id: id).show_active.limit(6)
   end
 end

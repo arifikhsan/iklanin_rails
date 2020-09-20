@@ -1,5 +1,5 @@
 module Mutations
-  class UpdateAd < BaseMutation
+  class UpdateItem < BaseMutation
     field :message, String, null: false
     field :slug, String, null: true
 
@@ -12,11 +12,11 @@ module Mutations
     argument :time_end, GraphQL::Types::ISO8601DateTime, required: true
 
     def resolve(args)
-      ad = Ad.find_by(slug: args[:slug])
-      return { message: 'Not found' } unless ad
+      item = item.find_by(slug: args[:slug])
+      return { message: 'Not found' } unless item
 
-      ad.update(args.except(:slug))
-      { message: 'ok', slug: ad.slug }
+      item.update(args.except(:slug))
+      { message: 'ok', slug: item.slug }
     end
   end
 end
