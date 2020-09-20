@@ -6,7 +6,7 @@ module Mutations
 
     def resolve(slug:)
       begin
-        item = ::item.friendly.find(slug)
+        item = ::Item.friendly.find(slug)
         item.destroy
         { message: 'ok' }
       rescue ActiveRecord::RecordNotFound

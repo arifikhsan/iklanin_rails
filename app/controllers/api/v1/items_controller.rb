@@ -17,7 +17,7 @@ class Api::V1::AdsController < Api::BaseController
     @item.price = item_params[:price]
     @item.user = current_user
     @item.time_start = Time.now
-    @item.time_end = Time.now + 30.days
+    @item.time_end = Time.now + Setting.max_duration_free
     @item.status = Item.statuses[:published]
 
     return render_error unless @item.save
@@ -40,9 +40,9 @@ class Api::V1::AdsController < Api::BaseController
     authorize @item
 
     @item.update(item_params)
-    @item.time_start = Time.now
-    @item.time_end = Time.now + 30.days
-    @item.status = Item.statuses[:published]
+    # @item.time_start = Time.now
+    # @item.time_end = Time.now + 30.days
+    # @item.status = Item.statuses[:published]
 
     if @item.save
       render json: {message: 'updated', data: @item}

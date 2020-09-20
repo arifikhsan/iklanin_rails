@@ -1,2 +1,2 @@
-module Api::V1::AdImagesHelper
+module Api::V1::ItemImagesHelper
 end

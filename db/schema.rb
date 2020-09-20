@@ -36,33 +36,6 @@ ActiveRecord::Schema.define(version: 2020_09_08_144619) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "ad_images", force: :cascade do |t|
-    t.bigint "item_id", null: false
-    t.boolean "cover", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_ad_images_on_ad_id"
-  end
-
-  create_table "ads", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
-    t.string "title"
-    t.text "detail"
-    t.bigint "price"
-    t.datetime "time_start"
-    t.datetime "time_end"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
-    t.datetime "deleted_at"
-    t.integer "status"
-    t.index ["category_id"], name: "index_ads_on_category_id"
-    t.index ["deleted_at"], name: "index_ads_on_deleted_at"
-    t.index ["slug"], name: "index_ads_on_slug", unique: true
-    t.index ["user_id"], name: "index_ads_on_user_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.bigint "parent_id"
     t.string "name"
@@ -82,6 +55,33 @@ ActiveRecord::Schema.define(version: 2020_09_08_144619) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "item_images", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.boolean "cover", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.string "title"
+    t.text "detail"
+    t.bigint "price"
+    t.datetime "time_start"
+    t.datetime "time_end"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.integer "status"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["deleted_at"], name: "index_items_on_deleted_at"
+    t.index ["slug"], name: "index_items_on_slug", unique: true
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(version: 2020_09_08_144619) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "ad_images", "ads"
-  add_foreign_key "ads", "categories"
-  add_foreign_key "ads", "users"
+  add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "users"
   add_foreign_key "user_details", "users"
 end

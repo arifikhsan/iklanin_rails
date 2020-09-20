@@ -29,7 +29,7 @@ end
 
 if Setting.count.zero?
   Setting.create(key: 'max_free', value: 3, detail: 'maksimal gratis iklan')
-  Setting.create(key: 'max_duration_free', value: 30, detail: 'maksimal iklan tayang per hari')
+  Setting.create(key: 'max_duration_free', value: 90, detail: 'maksimal iklan tayang per hari')
 end
 
 if Item.count.zero?
