@@ -1,5 +1,5 @@
 class Api::V1::ItemsController < Api::BaseController
-  before_action :authorize_request, only: [:create, :update, :destroy]
+  before_action :authorize_request, only: [:create, :update, :destroy, :me]
   before_action :set_item, only: [:update, :show, :destroy]
 
   def index
@@ -55,6 +55,10 @@ class Api::V1::ItemsController < Api::BaseController
     authorize @item
 
     @item.destroy
+  end
+
+  def me
+    @items = current_user.items.latest.page(params[:page]).includes(:category)
   end
 
   private
