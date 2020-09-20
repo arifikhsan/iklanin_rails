@@ -1,5 +1,5 @@
 module Types
-  class AdImageType < Types::BaseObject
+  class ItemImageType < Types::BaseObject
     field :id, Integer, null: false
     field :item, ItemType, null: false
     field :name, String, null: true

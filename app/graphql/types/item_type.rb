@@ -12,6 +12,6 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :slug, String, null: true
-    field :images, [AdImageType], null: true
+    field :images, [ItemImageType], null: true
   end
 end

@@ -3,7 +3,7 @@ class Api::V1::AdsController < Api::BaseController
   before_action :set_item, only: [:update, :show, :destroy]
 
   def index
-    @items = Item.show_active.page(params[:page]).includes(:category, user: :user_detail, ad_images: {image_attachment: :blob})
+    @items = Item.show_active.page(params[:page]).includes(:category, user: :user_detail, item_images: {image_attachment: :blob})
   end
 
   def show
@@ -11,10 +11,10 @@ class Api::V1::AdsController < Api::BaseController
 
   def create
     @item = Item.new
-    @item.category_id = ad_params[:category_id].to_i
-    @item.title = ad_params[:title]
-    @item.detail = ad_params[:detail]
-    @item.price = ad_params[:price]
+    @item.category_id = item_params[:category_id].to_i
+    @item.title = item_params[:title]
+    @item.detail = item_params[:detail]
+    @item.price = item_params[:price]
     @item.user = current_user
     @item.time_start = Time.now
     @item.time_end = Time.now + 30.days
@@ -26,7 +26,7 @@ class Api::V1::AdsController < Api::BaseController
     image_cover_array = params[:image_cover].values.map {|value| value.to_s.downcase == "true"}
 
     image_file_array.zip(image_cover_array).each do |file, cover|
-      AdImage.create(ad_id: @item.id, image: file, cover: cover)
+      ItemImage.create(item_id: @item.id, image: file, cover: cover)
     end
 
     if @item.valid?
@@ -39,7 +39,7 @@ class Api::V1::AdsController < Api::BaseController
   def update
     authorize @item
 
-    @item.update(ad_params)
+    @item.update(item_params)
     @item.time_start = Time.now
     @item.time_end = Time.now + 30.days
     @item.status = Item.statuses[:published]
@@ -67,7 +67,7 @@ class Api::V1::AdsController < Api::BaseController
     render json: {errors: @item.errors.full_messages}, status: :unprocessable_entity
   end
 
-  def ad_params
+  def item_params
     params.permit!
   end
 end

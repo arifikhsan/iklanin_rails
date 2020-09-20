@@ -1,5 +1,5 @@
 module Types
-  class AdImageInputType < Types::BaseInputObject
+  class ItemImageInputType < Types::BaseInputObject
     description "Attributes for creating or updating an item image"
 
     argument :image, ApolloUploadServer::Upload, required: true

@@ -13,14 +13,14 @@ json.data do
       json.medium polymorphic_url(@item.images.cover.image.variant(resize: '600x600'))
     end
   end
-  json.images @item.images do |ad_image|
-    json.id ad_image.id
-    json.filename ad_image.image.blob.filename
-    json.cover ad_image.cover
+  json.images @item.images do |item_image|
+    json.id item_image.id
+    json.filename item_image.image.blob.filename
+    json.cover item_image.cover
     json.url do
-      json.small polymorphic_url(ad_image.image.variant(resize: "150x150"))
-      json.medium polymorphic_url(ad_image.image.variant(resize: "600x600"))
-      json.original rails_blob_url(ad_image.image)
+      json.small polymorphic_url(item_image.image.variant(resize: "150x150"))
+      json.medium polymorphic_url(item_image.image.variant(resize: "600x600"))
+      json.original rails_blob_url(item_image.image)
     end
   end
   json.user do

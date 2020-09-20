@@ -10,15 +10,15 @@ module Mutations
     argument :time_start, GraphQL::Types::ISO8601DateTime, required: true
     argument :time_end, GraphQL::Types::ISO8601DateTime, required: true
 
-    argument :images, [Types::AdImageInputType], required: false
+    argument :images, [Types::ItemImageInputType], required: false
 
     def resolve(args)
       item = item.create(args.except(:images).merge(user_id: context[:current_user].id))
 
       if args[:images].present?
         args[:images].map do |uploaded_file|
-          ai = AdImage.new
-          ai.ad_id = item.id
+          ai = ItemImage.new
+          ai.item_id = item.id
           ai.image.attach(io: uploaded_file.image.to_io, filename: uploaded_file.image.original_filename)
           ai.cover = uploaded_file.cover
           ai.save

@@ -94,9 +94,9 @@ if Rails.env.development?
 
   Item.all.map do |item|
     3.times do
-      item.images.create do |ad_image|
-        ad_image.image.attach(io: Rails.root.join('app/assets/images/cat.jpg').open, filename: 'cat.jpg')
-        ad_image.cover = false
+      item.images.create do |item_image|
+        item_image.image.attach(io: Rails.root.join('app/assets/images/cat.jpg').open, filename: 'cat.jpg')
+        item_image.cover = false
       end
     end
 

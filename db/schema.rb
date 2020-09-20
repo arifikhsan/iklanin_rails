@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 2020_09_08_144619) do
   end
 
   create_table "ad_images", force: :cascade do |t|
-    t.bigint "ad_id", null: false
+    t.bigint "item_id", null: false
     t.boolean "cover", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ad_id"], name: "index_ad_images_on_ad_id"
+    t.index ["item_id"], name: "index_ad_images_on_ad_id"
   end
 
   create_table "ads", force: :cascade do |t|

@@ -3,8 +3,8 @@ class Item < ApplicationRecord
 
   belongs_to :category
   belongs_to :user
-  has_many :ad_images
-  alias_attribute :images, :ad_images
+  has_many :item_images
+  alias_attribute :images, :item_images
   enum status: [:draft, :review, :published, :moderate]
 
   friendly_id :title, use: :slugged

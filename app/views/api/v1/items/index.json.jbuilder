@@ -8,12 +8,12 @@ json.data @items do |item|
   json.time_end item.time_end
   json.status item.status
   json.cover_image_url polymorphic_url(item.images.cover.image.variant(resize: "300x300"))
-  json.images item.images do |ad_image|
-    json.filename ad_image.image.blob.filename
-    json.cover ad_image.cover
+  json.images item.images do |item_image|
+    json.filename item_image.image.blob.filename
+    json.cover item_image.cover
     json.url do
-      json.small polymorphic_url(ad_image.image.variant(resize: "300x300"))
-      json.original rails_blob_url(ad_image.image)
+      json.small polymorphic_url(item_image.image.variant(resize: "300x300"))
+      json.original rails_blob_url(item_image.image)
     end
   end
   json.user do
