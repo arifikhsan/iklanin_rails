@@ -42,11 +42,4 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
-
-  # config.model 'Ad' do
-    # list do
-      # field :title
-      # field :created_at
-    # end
-  # end
 end
