@@ -38,4 +38,4 @@ heroku logs --tail --app iklanin
 ### secret key
 
 EDITOR=vim rails credentials:edit
-rails:credentials:show
+rails credentials:show
