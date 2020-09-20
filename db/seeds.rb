@@ -9,7 +9,7 @@
 p 'seed start'
 
 if User.count.zero?
-  admin = User.create(email: 'admin@admin.com', password: '123456')
+  admin = User.create(email: 'admin@example.com', password: '123456')
   admin.build_user_detail(name: 'admin')
   admin.save
   admin.admin!
@@ -59,19 +59,19 @@ end
 if Rails.env.development?
   10.times do |index|
     user = User.create(email: "user#{index}@example.com", password: '123456')
-    user.build_user_detail(
-      name: "user #{index}",
-      phone_number: Faker::PhoneNumber.phone_number,
-      whatsapp_phone_number: Faker::PhoneNumber.phone_number,
-      address: Faker::Lorem.sentence,
-      village: Faker::Lorem.word,
-      district: Faker::Lorem.word,
-      regency: Faker::Lorem.word,
-      province: Faker::Lorem.word,
-      zip_code: Faker::Address.zip_code,
-      dob: Faker::Date.between(from: '2014-09-23', to: '2014-09-25'),
-      gender: UserDetail.genders[:male],
-    )
+    user.build_user_detail do |user_detail|
+      user_detail.name = "user #{index}"
+      user_detail.phone_number = Faker::PhoneNumber.phone_number
+      user_detail.whatsapp_phone_number = Faker::PhoneNumber.phone_number
+      user_detail.address = Faker::Lorem.sentence
+      user_detail.village = Faker::Lorem.word
+      user_detail.district = Faker::Lorem.word
+      user_detail.regency = Faker::Lorem.word
+      user_detail.province = Faker::Lorem.word
+      user_detail.zip_code = Faker::Address.zip_code
+      user_detail.dob = Faker::Date.between(from: '2014-09-23', to: '2014-09-25')
+      user_detail.gender = UserDetail.genders[:male]
+    end
     user.save
   end
 

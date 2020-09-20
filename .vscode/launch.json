@@ -10,7 +10,7 @@
       "request": "launch",
       "program": "${workspaceRoot}/bin/rake",
       "args": ["db:migrate", "test"],
-      "env": {"RAILS_ENV": "test"}
+      "env": { "RAILS_ENV": "test" }
     },
     {
       "name": "Drop, Recreate, Seed",
