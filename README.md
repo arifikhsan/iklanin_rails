@@ -14,7 +14,7 @@ order by date asc
 
 heroku restart && heroku pg:reset DATABASE --confirm iklanin && heroku run rake db:migrate
 
-### seed on heroku
+### reset on heroku
 
 heroku restart --app=iklanin && heroku pg:reset DATABASE --confirm iklanin --app=iklanin && heroku run rake db:migrate db:seed --app=iklanin 
 
