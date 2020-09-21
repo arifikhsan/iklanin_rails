@@ -49,13 +49,16 @@ class Api::V1::ItemsController < Api::BaseController
 
   def update
     authorize @item
+    # binding.pry
+    @item.update(item_main_params)
 
-    @item.update(item_params)
-    # @item.time_start = Time.now
-    # @item.time_end = Time.now + 30.days
-    # @item.status = Item.statuses[:published]
+    return render_error unless @item.save
 
-    if @item.save
+    @item.images.where(id: removed_ids_params).delete_all if removed_ids_params.present?
+    keep_image_params.each { |e| @item.images.where(id: e[:id]).update(e) } if keep_image_params.present?
+    @item.images.create(added_image_params) if added_image_params.present?
+
+    if @item.valid?
       render json: {message: 'updated', data: @item}
     else
       render json: {errors: @item.errors.full_messages}, status: :unprocessable_entity
@@ -84,5 +87,62 @@ class Api::V1::ItemsController < Api::BaseController
 
   def item_params
     params.permit!
+  end
+
+  def item_main_params
+    {
+      category_id: item_params[:category_id].to_i,
+      title: item_params[:title],
+      detail: item_params[:detail],
+      price: item_params[:price],
+    }
+  end
+
+  def removed_ids_params
+    return if params[:removed_image_id].blank?
+
+    params[:removed_image_id].values.map(&:to_i)
+  end
+
+  def keep_image_params
+    return if params[:keep_image_id].blank?
+
+    image_id_array = params[:keep_image_id].values.map(&:to_i)
+    image_name_array = params[:keep_image_name].values
+    image_detail_array = params[:keep_image_detail].values
+    image_cover_array = params[:keep_image_cover].values.map {|value| value.to_s.downcase == "true"}
+
+    arr = []
+    image_id_array.length.times do |index|
+      arr << {
+        id: image_id_array[index],
+        name: image_name_array[index],
+        detail: image_detail_array[index],
+        cover: image_cover_array[index]
+      }
+    end
+
+    arr
+  end
+
+  def added_image_params
+    return if params[:added_image_name].blank?
+
+    image_name_array = params[:added_image_name].values
+    image_file_array = params[:added_image_file].values
+    image_cover_array = params[:added_image_cover].values.map {|value| value.to_s.downcase == "true"}
+    image_detail_array = params[:added_image_detail].values
+
+    arr = []
+    image_name_array.length.times do |index|
+      arr << {
+        name: image_name_array[index],
+        image: image_file_array[index],
+        cover: image_cover_array[index],
+        detail: image_detail_array[index],
+      }
+    end
+
+    arr
   end
 end
