@@ -22,11 +22,19 @@ class Api::V1::ItemsController < Api::BaseController
 
     return render_error unless @item.save
 
+    image_name_array = params[:image_name].values
+    image_detail_array = params[:image_detail].values
     image_file_array = params[:image_file].values
     image_cover_array = params[:image_cover].values.map {|value| value.to_s.downcase == "true"}
 
-    image_file_array.zip(image_cover_array).each do |file, cover|
-      ItemImage.create(item_id: @item.id, image: file, cover: cover)
+    image_name_array.length.times do |index|
+      ItemImage.create do |item_image|
+        item_image.item_id = @item.id
+        item_image.name = image_name_array[index]
+        item_image.detail = image_detail_array[index]
+        item_image.image = image_file_array[index]
+        item_image.cover = image_cover_array[index]
+      end
     end
 
     if @item.valid?

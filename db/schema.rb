@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_09_08_144619) do
   create_table "item_images", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.boolean "cover", default: false
+    t.string "name"
+    t.string "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_item_images_on_item_id"

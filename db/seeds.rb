@@ -95,7 +95,9 @@ if Rails.env.development?
   Item.all.map do |item|
     3.times do
       item.images.create do |item_image|
+        item_image.name = Faker::Lorem.word
         item_image.image.attach(io: Rails.root.join('app/assets/images/cat.jpg').open, filename: 'cat.jpg')
+        item_image.detail = Faker::Lorem.sentence
         item_image.cover = false
       end
     end
