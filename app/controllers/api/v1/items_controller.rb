@@ -1,6 +1,6 @@
 class Api::V1::ItemsController < Api::BaseController
   before_action :authorize_request, only: [:create, :update, :destroy, :me]
-  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy, :push]
 
   def index
     @items = Item.show_active.page(params[:page]).includes(:category, user: :user_detail, item_images: {image_attachment: :blob})
@@ -73,6 +73,11 @@ class Api::V1::ItemsController < Api::BaseController
 
   def me
     @items = current_user.items.latest.page(params[:page]).includes(:category)
+  end
+
+  def push
+    @item.update(time_start: Time.now, time_end: Time.now + Setting.max_duration_free)
+    @item.save
   end
 
   private
