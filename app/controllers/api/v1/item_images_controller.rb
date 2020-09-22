@@ -1,4 +1,4 @@
-class Api::V1::AdImagesController < Api::BaseController
+class Api::V1::ItemImagesController < Api::BaseController
   before_action :authorize_request, only: [:create, :update, :destroy]
   before_action :set_item_image, only: [:update, :show, :destroy]
 
