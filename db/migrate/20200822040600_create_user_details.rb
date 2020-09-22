@@ -5,12 +5,7 @@ class CreateUserDetails < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :phone_number
       t.string :whatsapp_phone_number
-      t.string :address
-      t.string :village
-      t.string :district
-      t.string :regency
-      t.string :province
-      t.string :zip_code
+      t.text   :address
       t.date   :dob
       t.integer :gender
 

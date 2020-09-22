@@ -64,11 +64,6 @@ if Rails.env.development?
       user_detail.phone_number = Faker::PhoneNumber.phone_number
       user_detail.whatsapp_phone_number = Faker::PhoneNumber.phone_number
       user_detail.address = Faker::Lorem.sentence
-      user_detail.village = Faker::Lorem.word
-      user_detail.district = Faker::Lorem.word
-      user_detail.regency = Faker::Lorem.word
-      user_detail.province = Faker::Lorem.word
-      user_detail.zip_code = Faker::Address.zip_code
       user_detail.dob = Faker::Date.between(from: '2014-09-23', to: '2014-09-25')
       user_detail.gender = UserDetail.genders[:male]
     end

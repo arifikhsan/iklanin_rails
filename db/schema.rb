@@ -99,12 +99,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_144619) do
     t.string "name"
     t.string "phone_number"
     t.string "whatsapp_phone_number"
-    t.string "address"
-    t.string "village"
-    t.string "district"
-    t.string "regency"
-    t.string "province"
-    t.string "zip_code"
+    t.text "address"
     t.date "dob"
     t.integer "gender"
     t.datetime "created_at", precision: 6, null: false
