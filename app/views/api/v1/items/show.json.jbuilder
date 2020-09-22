@@ -15,7 +15,8 @@ json.data do
   end
   json.images @item.images do |item_image|
     json.id item_image.id
-    json.filename item_image.image.blob.filename
+    json.name item_image.name
+    json.detail item_image.detail
     json.cover item_image.cover
     json.url do
       json.small polymorphic_url(item_image.image.variant(resize: "150x150"))
