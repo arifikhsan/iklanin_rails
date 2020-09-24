@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   acts_as_paranoid
   after_initialize :set_default_status, if: :new_record?
 
-  scope :latest, -> { order(time_start: :asc) }
+  scope :latest, -> { order(created_at: :desc) }
   scope :status_draft, -> { where(status: Item.statuses[:draft]) }
   scope :status_published, -> { where(status: Item.statuses[:published]) }
   scope :current_displayed, -> { where('time_start < ? AND time_end > ?', Time.now, Time.now) }
