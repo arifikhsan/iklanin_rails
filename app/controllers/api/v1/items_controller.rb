@@ -17,7 +17,7 @@ class Api::V1::ItemsController < Api::BaseController
     @item.price = item_params[:price]
     @item.user = current_user
     @item.time_start = Time.now
-    @item.time_end = Time.now + Setting.max_duration_free
+    @item.time_end = Time.now + Setting.max_duration_free.days
     @item.status = Item.statuses[:published]
 
     return render_error unless @item.save
@@ -76,7 +76,7 @@ class Api::V1::ItemsController < Api::BaseController
   end
 
   def push
-    @item.update(time_start: Time.now, time_end: Time.now + Setting.max_duration_free)
+    @item.update(time_start: Time.now, time_end: Time.now + Setting.max_duration_free.days)
     @item.save
   end
 
