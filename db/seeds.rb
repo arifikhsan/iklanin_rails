@@ -41,7 +41,7 @@ if Item.count.zero?
     price: 200000,
     status: Item.statuses[:published],
     time_start: Time.now,
-    time_end: Time.now.tomorrow,
+    time_end: Time.now + 1.year,
   )
   Item.create(
     user: User.admin,
