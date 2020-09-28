@@ -20,4 +20,8 @@ class Category < ApplicationRecord
   def self.stuff
     find_by(name: 'Barang')
   end
+
+  def self.parents
+    where(parent_id: nil)
+  end
 end

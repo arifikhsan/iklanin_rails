@@ -3,7 +3,7 @@ class Api::V1::CategoriesController < Api::BaseController
   before_action :set_item, only: [:update, :show, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.parents
   end
 
   def show
