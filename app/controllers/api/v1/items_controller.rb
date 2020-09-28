@@ -17,7 +17,7 @@ class Api::V1::ItemsController < Api::BaseController
     @item.price = item_params[:price]
     @item.user = current_user
     @item.time_start = Time.now
-    @item.time_end = Time.now + Setting.max_duration_free.days
+    @item.time_end = Time.now + Setting.max_duration_free
     @item.status = Item.statuses[:published]
 
     return render_error unless @item.save
@@ -49,9 +49,8 @@ class Api::V1::ItemsController < Api::BaseController
 
   def update
     authorize @item
-    # binding.pry
-    @item.update(item_main_params)
 
+    @item.update(item_main_params)
     return render_error unless @item.save
 
     @item.images.where(id: removed_ids_params).delete_all if removed_ids_params.present?
@@ -76,8 +75,14 @@ class Api::V1::ItemsController < Api::BaseController
   end
 
   def push
-    @item.update(time_start: Time.now, time_end: Time.now + Setting.max_duration_free.days)
+    @item.update(time_start: Time.now, time_end: Time.now + Setting.max_duration_free)
     @item.save
+  end
+
+  def sitemap
+    slug = Item.all.select(:id, :slug)
+
+    render json: {data: slug }
   end
 
   private

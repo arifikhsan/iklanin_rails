@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'wakeup', to: 'misc#wakeup'
     namespace :v1 do
       get 'items/me', to: 'items#me'
+      get 'items/sitemap', to: 'items#sitemap'
       put 'items/:id/push', to: 'items#push'
 
       resources :items
