@@ -80,7 +80,7 @@ class Api::V1::ItemsController < Api::BaseController
   end
 
   def sitemap
-    slug = Item.all.select(:id, :slug)
+    slug = Item.show_active.select(:id, :slug)
 
     render json: {data: slug }
   end
