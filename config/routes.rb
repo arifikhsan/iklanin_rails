@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       resources :items
       resources :item_images
       resources :categories
+      get 'user_details', to: 'user_details#index'
+      put 'user_details', to: 'user_details#update'
     end
   end
 end
