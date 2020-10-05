@@ -26,6 +26,7 @@ json.data do
   end
   json.user do
     json.name @item.user.name
+    json.email @item.user.email
     json.phone_number @item.user.user_detail.phone_number
     json.whatsapp_phone_number @item.user.user_detail.whatsapp_phone_number
   end
